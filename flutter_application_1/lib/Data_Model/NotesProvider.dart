@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'Notes.dart';
-
 class NotesProvider extends ChangeNotifier {
   List<Notes> _notes = <Notes>[];
 
@@ -18,11 +16,10 @@ class NotesProvider extends ChangeNotifier {
     addNotes("Idukki", "assets/idukki.jpg");
     addNotes("Kumarakam", "assets/Kumarakam.jpg");
     addNotes("Cherai Beach", "assets/Cherai Beach.jpg");
-    
   }
 
-  void addNotes(String title, String description) {
-    Notes note = new Notes(title, description);
+  void addNotes(String title, String imageUrl) {
+    Notes note = new Notes(title, imageUrl);
 
     _notes.add(note);
     notifyListeners();
@@ -32,4 +29,10 @@ class NotesProvider extends ChangeNotifier {
     _notes.removeAt(index);
     notifyListeners();
   }
+}
+
+class Notes {
+  String title, imageUrl;
+
+  Notes(this.title, this.imageUrl);
 }

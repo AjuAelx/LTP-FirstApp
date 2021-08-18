@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Data_Model/Notes.dart';
-import 'package:flutter_application_1/Data_Model/NotesProvider.dart';
-import 'package:flutter_application_1/Screens/timer_screen.dart';
+import 'package:flutter_application_1/data_model/NotesProvider.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-
 import 'HomePage.dart';
 import 'LoginScreen.dart';
 
@@ -44,15 +41,15 @@ class HomeScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => MyHomePage()));
               },
             ),
-            ListTile(
-              title: Text('Timer'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TimerScreen()),
-                );
-              },
-            ),
+            // ListTile(
+            //   title: Text('Timer'),
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => TimerScreen()),
+            //     );
+            //   },
+            // ),
             ListTile(
               title: Text('Login'),
               onTap: () {
@@ -156,7 +153,7 @@ class NewCardList extends StatelessWidget {
               ),
             ),
             subtitle: Text(
-              notes.description,
+              notes.imageUrl,
               style: TextStyle(color: Colors.white),
             ),
           ),

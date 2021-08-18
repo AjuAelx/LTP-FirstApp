@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-import 'Destins.dart';
-
 class DestinProvider extends ChangeNotifier {
   List<Destins> _destins = <Destins>[];
 
@@ -13,8 +11,8 @@ class DestinProvider extends ChangeNotifier {
     addDestins("title", "description");
   }
 
-  void addDestins(String title, String description) {
-    Destins destin = new Destins(title, description);
+  void addDestins(title, imageUrl) {
+    Destins destin = new Destins(title, imageUrl);
 
     _destins.add(destin);
     notifyListeners();
@@ -24,4 +22,8 @@ class DestinProvider extends ChangeNotifier {
     _destins.removeAt(index);
     notifyListeners();
   }
+}
+
+class Destins {
+  Destins(String title, String imageUrl);
 }

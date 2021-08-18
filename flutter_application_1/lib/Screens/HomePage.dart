@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Data_Model/Notes.dart';
-import 'package:flutter_application_1/Data_Model/NotesProvider.dart';
-import 'package:flutter_application_1/Screens/LoginScreen.dart';
+import 'package:flutter_application_1/screens/LoginScreen.dart';
+import 'package:flutter_application_1/data_model/NotesProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -31,13 +30,6 @@ class _MyHomePage extends State<MyHomePage> {
           context, MaterialPageRoute(builder: (context) => LoginScreen()));
     }
   }
-
-  // void initial() async {
-  //   logindata = await SharedPreferences.getInstance();
-  //   setState(() {
-  //     username = logindata.getString('username');
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -133,14 +125,6 @@ class _MyHomePage extends State<MyHomePage> {
                       (BuildContext context, int index) {
                     return Consumer<NotesProvider>(
                         builder: (context, data, child) {
-                      // GestureDetector(
-                      //   onTap: () {
-                      //     Navigator.pushReplacement(
-                      //         context,
-                      //         MaterialPageRoute(
-                      //             builder: (context) => IndividualDest()));
-                      //   },
-                      // );
                       len = data.getNotes.length;
                       if (data.getNotes.length != 0) {
                         return NewGridView(data.getNotes[index], index);
@@ -241,86 +225,10 @@ class _MyHomePage extends State<MyHomePage> {
     );
   }
 
-  Widget listItem() => Card(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        elevation: 1,
-        // shape: RoundedRectangleBorder(
-        //   borderRadius: BorderRadius.only(
-        //     topLeft: Radius.circular(10.0),
-        //     topRight: Radius.circular(10.0),
-        //     bottomLeft: Radius.circular(5.0),
-        //     bottomRight: Radius.circular(5.0),
-        //   ),
-        // ),
-
-        // child: Consumer<NotesProvider>(
-        //   builder: (context, data, child) {
-        //     if (data.getNotes.length != 0) {
-        //       return new Container(
-        //         constraints: new BoxConstraints.expand(),
-        //         child: new Column(
-        //           crossAxisAlignment: CrossAxisAlignment.start,
-        //           children: <Widget>[
-        //             new Padding(
-        //               padding: EdgeInsets.all(10.0),
-        //               child: Text(
-        //                 Destins.title,
-        //                 textAlign: TextAlign.center,
-        //                 style: TextStyle(
-        //                   fontWeight: FontWeight.bold,
-        //                   fontSize: 14,
-        //                 ),
-        //               ),
-        //             ),
-        //           ],
-        //         ),
-        //       );
-        //     } else {
-        //       return Center(
-        //         child: Text('Add'),
-        //       );
-        //     }
-        //   },
-        // ),
-
-        // child: new Container(
-        //   constraints: new BoxConstraints.expand(),
-        //   child: new Column(
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     children: <Widget>[
-        //       new Image(
-        //         // https://bit.ly/3r4HBCO
-        //         image: NetworkImage(
-        //             'https://upload.wikimedia.org/wikipedia/commons/a/ad/Munnar_hillstation_kerala.jpg'),
-        //         fit: BoxFit.cover,
-        //         height: 130,
-        //       ),
-        //       new Padding(
-        //         padding: EdgeInsets.all(10.0),
-        //         child: Text(
-        //           'Munnar',
-        //           textAlign: TextAlign.center,
-        //           style: TextStyle(
-        //             fontWeight: FontWeight.bold,
-        //             fontSize: 14,
-        //           ),
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
-
-        // height: 100.0,
-        // color: Colors.purple,
-        // padding: EdgeInsets.all(20),
-        // child: Center(
-        //   child: Text(
-        //     "$title",
-        //     textAlign: TextAlign.center,
-        //     style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        //   ),
-        // ),
-      );
+  // Widget listItem() => Card(
+  //       clipBehavior: Clip.antiAliasWithSaveLayer,
+  //       elevation: 1,
+  //     );
 }
 
 class NewGridView extends StatelessWidget {
@@ -330,11 +238,13 @@ class NewGridView extends StatelessWidget {
   NewGridView(this.notes, this.index);
   @override
   Widget build(BuildContext context) {
-
     return new GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => IndividualDest(notes.title, notes.description)));
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    IndividualDest(notes.title, notes.imageUrl)));
       },
       child: Card(
         elevation: 4,
@@ -343,7 +253,7 @@ class NewGridView extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Image(
-              image: AssetImage(notes.description),
+              image: AssetImage(notes.imageUrl),
               fit: BoxFit.cover,
               height: 120,
             ),
@@ -357,43 +267,6 @@ class NewGridView extends StatelessWidget {
             ),
           ],
         ),
-
-        // child: Column(
-        //   children: [
-        //     Row(
-        //       children: [
-        //         Wrap(
-        //           children: [
-        //             new Image(
-        //               image: NetworkImage(
-        //                   'https://www.ekeralatourism.net/wp-content/uploads/2018/03/Alleppey.jpg'),
-        //               fit: BoxFit.cover,
-        //               height: 100,
-        //             )
-        //           ],
-        //         ),
-        //         // new Image(
-        //         //   image: NetworkImage(
-        //         //       'https://www.ekeralatourism.net/wp-content/uploads/2018/03/Alleppey.jpg'),
-        //         //   fit: BoxFit.cover,
-        //         //   height: 100,
-        //         // ),
-        //       ],
-        //     ),
-        //     Row(
-        //       children: [
-        //         new Padding(
-        //           padding: EdgeInsets.all(10.0),
-        //           child: new Text(
-        //             notes.title,
-        //             style: new TextStyle(
-        //                 fontSize: 14, fontWeight: FontWeight.bold),
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }
@@ -433,18 +306,3 @@ void showDialogBox(BuildContext context) {
         return alertDialog;
       });
 }
-
-// List _gridList(int count) {
-//   List<Widget> gridView = [];
-
-//   for (int i = 1; i <= count; i++) {
-//     gridView.add(new Padding(
-//       padding: EdgeInsets.all(20.0),
-//       child: new Text(
-//         'Item ${i.toString()}',
-//         style: new TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-//       ),
-//     ));
-//   }
-//   return _gridList(count);
-// }

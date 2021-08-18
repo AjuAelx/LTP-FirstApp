@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Screens/HomePage.dart';
+import 'package:flutter_application_1/screens/HomePage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toast/toast.dart';
 
@@ -32,7 +32,6 @@ class _LoginScreen extends State<LoginScreen> {
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
     emailController.dispose();
     passController.dispose();
     super.dispose();
@@ -89,15 +88,11 @@ class _LoginScreen extends State<LoginScreen> {
                     color: Color(0xFF151c09).withOpacity(0.7),
                     borderRadius:
                         BorderRadius.only(topLeft: Radius.elliptical(240, 150)),
-                    // border: new Border.all(color: Colors.white),
                   ),
                   alignment: Alignment.topCenter,
                   child: new Container(
                     width: 300.0,
                     height: 430.0,
-                    // decoration: new BoxDecoration(
-                    //   border: new Border.all(color: Colors.white),
-                    // ),
                     child: Column(
                       children: [
                         SizedBox(
@@ -110,9 +105,6 @@ class _LoginScreen extends State<LoginScreen> {
                                 padding: EdgeInsets.all(5.0),
                                 child: Container(
                                   width: 300.0,
-                                  // decoration: new BoxDecoration(
-                                  //   border: new Border.all(color: Colors.white),
-                                  // ),
                                   child: Text(
                                     'Welcome to Kerala. Login First',
                                     style: TextStyle(
@@ -133,9 +125,6 @@ class _LoginScreen extends State<LoginScreen> {
                                     padding: EdgeInsets.all(0.0),
                                     child: Container(
                                       width: 300.0,
-                                      // decoration: new BoxDecoration(
-                                      //   border: new Border.all(color: Colors.white),
-                                      // ),
                                       child: Theme(
                                         data: new ThemeData(
                                           primaryColor: Colors.white,
@@ -143,6 +132,7 @@ class _LoginScreen extends State<LoginScreen> {
                                           hintColor: Colors.white,
                                         ),
                                         child: new TextFormField(
+                                          autofocus: true,
                                           controller: emailController,
                                           style: TextStyle(color: Colors.white),
                                           decoration: new InputDecoration(
@@ -152,9 +142,6 @@ class _LoginScreen extends State<LoginScreen> {
                                               borderRadius:
                                                   new BorderRadius.circular(
                                                       25.0),
-                                              // borderSide: new BorderSide(
-                                              //   color: Colors.white,
-                                              // ),
                                             ),
                                             enabledBorder: OutlineInputBorder(
                                               borderRadius:
@@ -163,10 +150,6 @@ class _LoginScreen extends State<LoginScreen> {
                                                 color: Colors.white,
                                               ),
                                             ),
-                                            // focusedBorder: OutlineInputBorder(
-                                            //   borderRadius: BorderRadius.circular(25.0),
-                                            //   // borderSide: BorderSide(color: Colors.white),
-                                            // ),
                                           ),
                                         ),
                                       ),
@@ -179,9 +162,6 @@ class _LoginScreen extends State<LoginScreen> {
                                     padding: EdgeInsets.all(0.0),
                                     child: Container(
                                       width: 300.0,
-                                      // decoration: new BoxDecoration(
-                                      //   border: new Border.all(color: Colors.white),
-                                      // ),
                                       child: Theme(
                                         data: new ThemeData(
                                           primaryColor: Colors.white,
@@ -199,9 +179,6 @@ class _LoginScreen extends State<LoginScreen> {
                                               borderRadius:
                                                   new BorderRadius.circular(
                                                       25.0),
-                                              // borderSide: new BorderSide(
-                                              //   color: Colors.white,
-                                              // ),
                                             ),
                                             enabledBorder: OutlineInputBorder(
                                               borderRadius:
@@ -210,10 +187,6 @@ class _LoginScreen extends State<LoginScreen> {
                                                 color: Colors.white,
                                               ),
                                             ),
-                                            // focusedBorder: OutlineInputBorder(
-                                            //   borderRadius: BorderRadius.circular(25.0),
-                                            //   // borderSide: BorderSide(color: Colors.white),
-                                            // ),
                                           ),
                                         ),
                                       ),
@@ -226,9 +199,6 @@ class _LoginScreen extends State<LoginScreen> {
                                     padding: EdgeInsets.all(0.0),
                                     child: Container(
                                       width: 300.0,
-                                      // decoration: new BoxDecoration(
-                                      //   border: new Border.all(color: Colors.white),
-                                      // ),
                                       child: Theme(
                                         data: new ThemeData(
                                           primaryColor: Colors.white,
@@ -265,23 +235,14 @@ class _LoginScreen extends State<LoginScreen> {
                                               logindata.setString(
                                                   'username', userEmail);
 
-                                              // Navigator.pushNamed(
-                                              //     context, '/HomePage');
-
                                               Navigator.pushReplacement(
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           MyHomePage()));
-
-                                              // Navigator.push(
-                                              //     context,
-                                              //     MaterialPageRoute(
-                                              //         builder: (context) =>
-                                              //             MyHomePage()));
                                             } else {
                                               Toast.show(
-                                                  'Login failed due to isufficient data',
+                                                  'Login failed due to in sufficient data',
                                                   context,
                                                   duration: Toast.LENGTH_LONG,
                                                   gravity: Toast.BOTTOM);
